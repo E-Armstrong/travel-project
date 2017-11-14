@@ -14,10 +14,11 @@
         <div class="row">
             <div class="col-12">
                 <p>Find Hotels in:</p>
-                <span><input id="hotelLocation" type="text" placeholder="Enter a City"><span>
+                <span><input id="hotelLocation" v-model="location" type="text" placeholder="Enter a City"><span>
                 <input class="btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
+        <div v-for="location in locations" v-on:click="findHotelDetails" v-bind:id="location.place_id">{{location.name}}</div> <!--id = place_id -->
         <br>
         <br>
         <div class="row">
@@ -39,6 +40,6 @@
 <!-- AUTO COMPLETE -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

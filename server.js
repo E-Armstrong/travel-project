@@ -1,5 +1,6 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var request = require('request')
 
 const mongoose = require('mongoose');
 var app = express()
@@ -21,33 +22,42 @@ app.post('/hosteldata', function(req, res) {
 app.post('/airbnbdata', function(req, res) {
 })
 
+
 app.post('/hoteldata', function(req, res) {
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
+    //console.log('data from google: ', body)
+    //console.log(res, 'res')
+    // console.log(body)
+    res.send(body)
+
+    
+    })
+})
+
+app.post('/hoteldetails', function(req, res) {
+    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
+    console.log('data from nasa: ', body)
+    res.send(body)
+    
+    })
 })
 
 // Places API
-app.get('/api', function(req, res){
-    console.log('pinging', req.query)
+// app.get('/api', function(req, res){
+//     console.log('pinging', req.query)
 
-    //parameters: query, type=lodging, radius=10000 meters(we can have user choose radius)
-    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.location}&type=lodging&radius=10000&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
-        console.log('data from nasa: ', body)
-        res.send(body)
-    
-    })
+//     //parameters: query, type=lodging, radius=10000 meters(we can have user choose radius)
 
-})
-// Place details API
-app.get('/api', function(req, res){
-    console.log('pinging', req.query)
+
+// })
+// // Place details API
+// app.get('/api', function(req, res){
+//     console.log('pinging', req.query)
 
     //parameters: placeid
-    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.placeId}=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
-        console.log('data from nasa: ', body)
-        res.send(body)
-    
-    })
 
-})
+
+// })
 
 
 
@@ -55,3 +65,11 @@ app.get('/api', function(req, res){
 app.listen(8080, function() {
     console.log('started on 8080');
 })
+
+
+
+
+
+
+
+
