@@ -36,8 +36,17 @@ app.post('/hoteldata', function(req, res) {
 
 app.post('/hoteldetails', function(req, res) {
     request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyDXE5RxiZGcQmZ1XUzWVPD6hygz_udMGqY`, function (error, response, body) {
-    console.log('data from nasa: ', body)
+    console.log('data from google: ', body)
     res.send(body)
+    
+    })
+})
+
+app.post('/hotelPrices', function(req, res) {
+    request(`https://www.googleapis.com/travelpartner/v2.0/e4fb96365841de2c3b1d83ca2e7f28933a3e1866/prices/${req.body.hotelObject}`, function (error, response, body) {
+    console.log('data from google: ', body)
+    res.send(body)
+
     
     })
 })

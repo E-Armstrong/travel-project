@@ -42,20 +42,27 @@ var mainVm = new Vue({
         
         },
         findHotelDetails: function(event){
-            event.preventDefault();
 
             // id = place_id
             // console.log(event.target.id)
             
-            $.post('/hoteldetails', {hotelObject: event.target.id}, function(data){
+            $.post('/hoteldetails', {hotelObject: event.target.id},(data)=>{
                 // console.log(data)
 
-            hotelDetails = JSON.parse(data)
-            console.log(hotelDetails)
+                hotelDetails = JSON.parse(data)
+                console.log(hotelDetails)
 
-            mainVm.details.push(hotelDetails.result)
+                mainVm.details.push(hotelDetails.result)
+
+                
+            })            
+            $.post('/hotelPrices', {hotelObject: event.target.id}, function(data){
+            hotelPrices = JSON.parse(data)
+            console.log('hotel prices',hotelPrices)
+
             })
-        },
+        }
+
     }
 })
 
