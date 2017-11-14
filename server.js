@@ -15,6 +15,15 @@ app.get('/', function(req, res){
     res.sendFile('./html/index.html', {root: './public'})
 })
 
+app.post('/hosteldata', function(req, res) {
+})
+
+app.post('/airbnbdata', function(req, res) {
+})
+
+app.post('/hoteldata', function(req, res) {
+})
+
 //request/response to/from main.js
 app.get('/api', function(req, res){
     console.log('pinging', req.query)
