@@ -24,18 +24,33 @@ app.post('/airbnbdata', function(req, res) {
 app.post('/hoteldata', function(req, res) {
 })
 
-//request/response to/from main.js
+// Places API
 app.get('/api', function(req, res){
     console.log('pinging', req.query)
 
-    //request to Nasa API
-    request(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${req.query.startDate1}&end_date=${req.query.endDate}&api_key=uBbS7vZx5Jtx6pAfsZBVVrMThUPYxy6eMNq7m8iG`, function (error, response, body) {
+    //parameters: query, type=lodging, radius=10000 meters(we can have user choose radius)
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.location}&type=lodging&radius=10000&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
         console.log('data from nasa: ', body)
         res.send(body)
     
     })
 
 })
+// Place details API
+app.get('/api', function(req, res){
+    console.log('pinging', req.query)
+
+    //parameters: placeid
+    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.placeId}=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
+        console.log('data from nasa: ', body)
+        res.send(body)
+    
+    })
+
+})
+
+
+
 
 app.listen(8080, function() {
     console.log('started on 8080');

@@ -7,14 +7,15 @@
     <title></title>
 </head>
 <body>
-<h1>The Travel Project</h1>
+
 <div id="app">
-    <div class="container-fluid">
+    <div class="container">
+        <h1>The Travel Project</h1>
         <div class="row">
             <div class="col-12">
-                <p>Enter location:</p>
-                <input id="hotelLocation" type="text" placeholder="Enter location">
-                <input v-on:click="findHotels" type="submit">
+                <p>Find Hotels in:</p>
+                <span><input id="hotelLocation" type="text" placeholder="Enter a City"><span>
+                <input class="btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
         <br>
