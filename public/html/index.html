@@ -3,7 +3,7 @@
 <head>
     <script src="https://unpkg.com/vue"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title></title>
 </head>
 <body>
@@ -18,7 +18,18 @@
                 <input class="btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
-        <div v-for="location in locations" v-on:click="findHotelDetails" v-bind:id="location.place_id">{{location.name}}</div> <!--id = place_id -->
+        <div class="row">
+            <div class="borders col-4">
+                <div v-for="location in locations" v-on:click="findHotelDetails" v-bind:id="location.place_id">{{location.name}}</div> <!--id = place_id -->
+            </div>
+            <div class="borders col-8">
+                <div v-for="detail in details">Name: {{detail.name}}</div> 
+                <div v-for="detail in details">Address: {{detail.formatted_address}}</div> 
+                <div v-for="detail in details">Phone: {{detail.formatted_phone_number}}</div> 
+                <div v-for="detail in details">Rating: {{detail.rating}}</div> 
+                <div v-for="detail in details">Website: {{detail.url}}</div> 
+           </div>
+        </div>
         <br>
         <br>
         <div class="row">

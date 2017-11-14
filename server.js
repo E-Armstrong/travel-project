@@ -24,7 +24,7 @@ app.post('/airbnbdata', function(req, res) {
 
 
 app.post('/hoteldata', function(req, res) {
-    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyDXE5RxiZGcQmZ1XUzWVPD6hygz_udMGqY`, function (error, response, body) {
     //console.log('data from google: ', body)
     //console.log(res, 'res')
     // console.log(body)
@@ -35,7 +35,7 @@ app.post('/hoteldata', function(req, res) {
 })
 
 app.post('/hoteldetails', function(req, res) {
-    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4`, function (error, response, body) {
+    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyDXE5RxiZGcQmZ1XUzWVPD6hygz_udMGqY`, function (error, response, body) {
     console.log('data from nasa: ', body)
     res.send(body)
     

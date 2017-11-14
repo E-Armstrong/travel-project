@@ -3,7 +3,9 @@ var mainVm = new Vue({
     data: {
         locations:[],
 
-        location:'',        
+        location:'',
+
+        details:[],
     },
     methods: {
         findHostels: function(event){
@@ -25,7 +27,7 @@ var mainVm = new Vue({
             
             console.log(this.location)
             $.post('/hoteldata', {hotelObject: this.location}, function(data){ //data sent must be an object, placeholder object inserted
-            // console.log(data) 
+            console.log(data) 
 
             hotelData = JSON.parse(data)
             // console.log(hotelData)
@@ -46,7 +48,12 @@ var mainVm = new Vue({
             // console.log(event.target.id)
             
             $.post('/hoteldetails', {hotelObject: event.target.id}, function(data){
-                console.log(data)
+                // console.log(data)
+
+            hotelDetails = JSON.parse(data)
+            console.log(hotelDetails)
+
+            mainVm.details.push(hotelDetails.result)
             })
         },
     }
