@@ -1,3 +1,21 @@
+$( document ).ready(function() {
+    console.log( "ready!" )
+})
+
+
+var initMap = function(event){
+    
+    var options = {
+        zoom: 8,
+        center: {lat:42.360, lng:-71.0589}
+    }
+    var map = new google.maps.Map(document.getElementById('map'), options)
+}
+
+
+
+
+
 var mainVm = new Vue({
     el: '#app',
     data: {
@@ -31,7 +49,7 @@ var mainVm = new Vue({
             event.stopPropagation();
             console.log(this.location)
             
-            $.post('/hoteldata', {hotelObject: this.location}, function(data){ //data sent must be an object, placeholder object inserted
+            $.post('/hoteldata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
             // console.log(data) 
 
             hotelData = JSON.parse(data)
@@ -43,6 +61,7 @@ var mainVm = new Vue({
 
                 }
                 // console.log(mainVm.locations)
+                this.initMap()
             })
         
         },
@@ -84,7 +103,9 @@ var mainVm = new Vue({
             
 
             })
-        }
+        },
+
+        
 
     }
 })
