@@ -13,9 +13,6 @@ var initMap = function(event){
 }
 
 
-
-
-
 var mainVm = new Vue({
     el: '#app',
     data: {

@@ -31,19 +31,22 @@
 
 <div id="app">
     <div class="container">
+        <br>
         <div class="row">
             <div class="col-12">
                 <image class="img" src="https://scontent.fapa1-2.fna.fbcdn.net/v/t31.0-8/23550869_10108909599198600_9183751702423830675_o.jpg?oh=8b43e2b4aa6839262c8747c60730c63c&oe=5A964553"></image>
             </div>
         </div>
-        
+        <br>
         <div class="row">
             <div class="col-12">
-                <p>Find Hotels in:</p>
+                <h1>Find Hotels in:</h1>
                 <span><input class="input" id="hotelLocation" v-model="location" type="text" placeholder="  Enter a City"><span>
                 <input class="btn-margin btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
+        <br>
+        <div id="map"></div>
         
         <div id="accordion" role="tablist">
             <div class="card" v-for="(location, index) in locations"  v-bind:id="location.place_id">
@@ -68,30 +71,14 @@
               </div>
             </div>
         </div>
-        <div id="map"></div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-12">
-                <p>Enter date:</p>
-                <input type="text">
-                <input class="btn" type="submit">
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-12">
-                <p>Enter number of people traveling:</p>
-                <input type="text">
-                <input class="btn" type="submit">
-            </div>
-        </div>
+        
+        
+        
     </div>    
 </div>
 <!-- AUTO COMPLETE -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAolWUbC5eS2gAHxmRFgna2XoKNGSQMo78&callback=initMap"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfsg1cIKfe4Da3pGMUWyB4wgE1LZ7KaQ&callback=initMap"></script>
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script> -->
 <script src="js/main.js"></script>
 </body>
 </html>
