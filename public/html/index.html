@@ -37,7 +37,7 @@
         </div>
         <div id="accordion" role="tablist">
             <div class="card" v-for="(location, index) in locations"  v-bind:id="location.place_id">
-              <div class="card-header" v-on:click="findHotelDetails(location.place_id, $event)" role="tab" id="headingOne">
+              <div class="card-header" v-on:click="findHotelDetails(location, $event)" role="tab" id="headingOne">
                 <h5 class="mb-0">
                   <a data-toggle="collapse" v-bind:href=`#collapse${index}` aria-expanded="true" aria-controls="collapseOne">
                     {{location.name}}
@@ -45,14 +45,14 @@
                 </h5>
               </div>
           
-              <div v-bind:id=`collapse${index}` class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div v-bind:id=`collapse${index}` class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                        <div v-for="detail in details">
-                                <div >Name: {{detail.name}}</div> 
-                                <div >Address: {{detail.formatted_address}}</div> 
-                                <div >Phone: {{detail.formatted_phone_number}}</div> 
-                                <div >Rating: {{detail.rating}}</div> 
-                                <div >Website: {{detail.url}}</div> 
+                        <div v-if="location.details">
+                                <div >Name: {{location.details.name}}</div> 
+                                <div >Address: {{location.details.formatted_address}}</div> 
+                                <div >Phone: {{location.details.formatted_phone_number}}</div> 
+                                <div >Rating: {{location.details.rating}}</div> 
+                                <div >Website: {{location.details.url}}</div> 
                         </div>
                 </div>
               </div>

@@ -12,15 +12,26 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'))
 
+var hotelSchema = new mongoose.Schema({
+    name: {type: String, required: true}
+    price: {type: Number, required: true}
+    details: {type: Array}
+
+})
+
+var hotelModel = mongoose.model('hotel', hotelSchema)
+
+
+
 app.get('/', function(req, res){
     res.sendFile('./html/index.html', {root: './public'})
 })
 
-app.post('/hosteldata', function(req, res) {
-})
+// app.post('/hosteldata', function(req, res) {
+// })
 
-app.post('/airbnbdata', function(req, res) {
-})
+// app.post('/airbnbdata', function(req, res) {
+// })
 
 
 app.post('/hoteldata', function(req, res) {
@@ -42,25 +53,6 @@ app.post('/hoteldetails', function(req, res) {
     })
 })
 
-
-
-
-// Places API
-// app.get('/api', function(req, res){
-//     console.log('pinging', req.query)
-
-//     //parameters: query, type=lodging, radius=10000 meters(we can have user choose radius)
-
-
-// })
-// // Place details API
-// app.get('/api', function(req, res){
-//     console.log('pinging', req.query)
-
-    //parameters: placeid
-
-
-// })
 
 
 
