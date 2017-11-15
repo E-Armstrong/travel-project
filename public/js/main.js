@@ -8,13 +8,13 @@ var mainVm = new Vue({
         details:[],
     },
     methods: {
-        findHostels: function(event){
-            event.preventDefault();
+        // findHostels: function(event){
+        //     event.preventDefault();
             
-            $.post('/hosteldata', {Object: object}, function(data){ //data sent must be an object, placeholder object inserted
+        //     $.post('/hosteldata', {Object: object}, function(data){ //data sent must be an object, placeholder object inserted
                 
-            })
-        },
+        //     })
+        // },
         findAirbnbs: function(event){
             event.preventDefault();
             
@@ -41,27 +41,8 @@ var mainVm = new Vue({
             })
         
         },
-<<<<<<< HEAD
-        findHotelDetails: function(event){
 
-            // id = place_id
-            // console.log(event.target.id)
-            
-            $.post('/hoteldetails', {hotelObject: event.target.id},(data)=>{
-                // console.log(data)
 
-                hotelDetails = JSON.parse(data)
-                console.log(hotelDetails)
-
-                mainVm.details.push(hotelDetails.result)
-
-                
-            })            
-            $.post('/hotelPrices', {hotelObject: event.target.id}, function(data){
-            hotelPrices = JSON.parse(data)
-            console.log('hotel prices',hotelPrices)
-
-=======
         findHotelDetails: function(location_id, event){
             event.preventDefault();
             event.stopPropagation();
@@ -73,9 +54,9 @@ var mainVm = new Vue({
 
             hotelDetails = JSON.parse(data)
             console.log(hotelDetails)
-            mainVm.details.push(hotelDetails.result)
+            mainVm.locations.push(hotelDetails.result)
             console.log("MainVM details: ", mainVm.details)
->>>>>>> 1236af9379f0287801cf9b12d05705456a27db3a
+
             })
         }
 

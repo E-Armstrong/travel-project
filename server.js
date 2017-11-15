@@ -2,12 +2,12 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 var app = express()
 
-mongoose.connect('mongodb://localhost/travel-project');
+mongoose.connect('mongodb://localhost/travel-project')
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
 app.use(express.static('./public'))
@@ -42,14 +42,8 @@ app.post('/hoteldetails', function(req, res) {
     })
 })
 
-app.post('/hotelPrices', function(req, res) {
-    request(`https://www.googleapis.com/travelpartner/v2.0/e4fb96365841de2c3b1d83ca2e7f28933a3e1866/prices/${req.body.hotelObject}`, function (error, response, body) {
-    console.log('data from google: ', body)
-    res.send(body)
 
-    
-    })
-})
+
 
 // Places API
 // app.get('/api', function(req, res){
@@ -72,7 +66,7 @@ app.post('/hotelPrices', function(req, res) {
 
 
 app.listen(8080, function() {
-    console.log('started on 8080');
+    console.log('started on 8080')
 })
 
 
