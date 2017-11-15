@@ -29,24 +29,12 @@ var mainVm = new Vue({
         $.get('/locations', (dataFromServer) => {
             this.locations = dataFromServer
         })
+    },
     methods: {
-        // findHostels: function(event){
-        //     event.preventDefault();
-            
-        //     $.post('/hosteldata', {Object: object}, function(data){ //data sent must be an object, placeholder object inserted
-                
-        //     })
-        // },
-        // findAirbnbs: function(event){
-        //     event.preventDefault();
-            
-            // $.post('/airbnbdata', {Object: object}, function(data){ //data sent must be an object, placeholder object inserted
-                
-            // })
-        },
+        
         findHotels: function(event){
             event.preventDefault();
-            event.stopPropagation();
+            
             console.log(this.location)
             
             $.post('/hoteldata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
@@ -61,26 +49,10 @@ var mainVm = new Vue({
 
                 }
                 // console.log(mainVm.locations)
-                this.initMap()
+                
             })
         
         },
-
-
-        findHotelDetails: function(location_id, event){
-            event.preventDefault();
-            event.stopPropagation();
-            // id = place_id
-            // console.log(event.target.id)
-            
-            $.post('/hoteldetails', {hotelObject: location_id}, function(data){
-            console.log("Event Target ID: ", location_id)
-
-            hotelDetails = JSON.parse(data)
-            console.log(hotelDetails)
-            mainVm.locations.push(hotelDetails.result)
-            console.log("MainVM details: ", mainVm.details)
-
 
         findHotelDetails: function(location, event){
             event.preventDefault();
@@ -104,9 +76,6 @@ var mainVm = new Vue({
 
             })
         },
-
-        
-
     }
 })
 

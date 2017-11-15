@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use(express.static('./public'))
 
 var hotelSchema = new mongoose.Schema({
-    name: {type: String, required: true}
-    price: {type: Number, required: true}
+    name: {type: String, required: true},
+    price: {type: Number, required: true},
     details: {type: Array}
 
 })
