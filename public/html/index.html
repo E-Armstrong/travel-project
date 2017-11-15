@@ -12,33 +12,24 @@
 
 <div id="app">
     <div class="container">
-        <h1>The Travel Project</h1>
+        <div class="row">
+            <div class="col-12">
+                <image class="img" src="https://scontent.fapa1-2.fna.fbcdn.net/v/t31.0-8/23550869_10108909599198600_9183751702423830675_o.jpg?oh=8b43e2b4aa6839262c8747c60730c63c&oe=5A964553"></image>
+            </div>
+        </div>
+        
         <div class="row">
             <div class="col-12">
                 <p>Find Hotels in:</p>
-                <span><input id="hotelLocation" v-model="location" type="text" placeholder="Enter a City"><span>
-                <input class="btn" v-on:click="findHotels" type="submit">
+                <span><input class="input" id="hotelLocation" v-model="location" type="text" placeholder="  Enter a City"><span>
+                <input class="btn-margin btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
-        <div class="row">
-            <div class="borders col-4">
-                <div v-for="location in locations" v-on:click="findHotelDetails(location.place_id, $event)" v-bind:id="location.place_id">{{location.name}}</div> <!--id = place_id -->
-            </div>
-            <div class="borders col-8">
-                <div v-for="detail in details">
-                        <div >Name: {{detail.name}}</div> 
-                        <div >Address: {{detail.formatted_address}}</div> 
-                        <div >Phone: {{detail.formatted_phone_number}}</div> 
-                        <div >Rating: {{detail.rating}}</div> 
-                        <div >Website: {{detail.url}}</div> 
-                </div>
-
-           </div>
-        </div>
+        
         <div id="accordion" role="tablist">
             <div class="card" v-for="(location, index) in locations"  v-bind:id="location.place_id">
               <div class="card-header" v-on:click="findHotelDetails(location, $event)" role="tab" id="headingOne">
-                <h5 class="mb-0">
+                <h5 class="mb-0 text-dark">
                   <a data-toggle="collapse" v-bind:href=`#collapse${index}` aria-expanded="true" aria-controls="collapseOne">
                     {{location.name}}
                   </a>
@@ -48,16 +39,17 @@
               <div v-bind:id=`collapse${index}` class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                         <div v-if="location.details">
-                                <div >Name: {{location.details.name}}</div> 
-                                <div >Address: {{location.details.formatted_address}}</div> 
-                                <div >Phone: {{location.details.formatted_phone_number}}</div> 
-                                <div >Rating: {{location.details.rating}}</div> 
-                                <div >Website: {{location.details.url}}</div> 
+                                <div ><b>Name:</b> {{location.details.name}}</div> 
+                                <div ><b>Address:</b> {{location.details.formatted_address}}</div> 
+                                <div ><b>Phone:</b> {{location.details.formatted_phone_number}}</div> 
+                                <div ><b>Rating:</b> {{location.details.rating}}</div> 
+                                <div ><b>Website:</b> <a v-bind:href="location.details.url">{{location.details.url}}</a></div> 
                         </div>
                 </div>
               </div>
             </div>
         </div>
+        <div id="map"></div>
         <br>
         <br>
         <div class="row">
@@ -79,6 +71,7 @@
     </div>    
 </div>
 <!-- AUTO COMPLETE -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAolWUbC5eS2gAHxmRFgna2XoKNGSQMo78&callback=initMap"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="js/main.js"></script>
