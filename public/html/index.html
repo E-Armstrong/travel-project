@@ -31,7 +31,7 @@
 
 <div id="app">
     <div class="container">
-        <br>
+        <br
         <div class="row">
             <div class="col-12">
                 <image class="img" src="https://scontent.fapa1-2.fna.fbcdn.net/v/t31.0-8/23550869_10108909599198600_9183751702423830675_o.jpg?oh=8b43e2b4aa6839262c8747c60730c63c&oe=5A964553"></image>
@@ -76,8 +76,33 @@
         
     </div>    
 </div>
+
+<script> 
+function initMap() {     
+    var options = {
+        zoom: 8,
+        center: {lat:40.0150, lng:-105.2705}
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+    google.maps.event.addListener(map, 'click', function(event) {
+        console.log(event.latLng)
+        addMarker(event.latLng, map)
+        mainVm.locations = event.latLng
+        
+      })
+
+    var addMarker = function(coordinates){
+        var marker = new google.maps.Marker({
+              position: coordinates,
+              map: map
+            })
+    }
+}
+</script>
 <!-- AUTO COMPLETE -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfsg1cIKfe4Da3pGMUWyB4wgE1LZ7KaQ&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GgcDmbumAspDKIaVE915FY8xi9GoBkA&callback=initMap"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script> -->
 <script src="js/main.js"></script>
 </body>
