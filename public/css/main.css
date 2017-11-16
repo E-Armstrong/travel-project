@@ -3,8 +3,10 @@
 }
 
 #log-in {
-	position: abosolute;
+	position: absolute;
 	font-weight: bold;
+	top: 15px;
+	left: 1050px;
 }
 
 a{
