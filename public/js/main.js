@@ -1,3 +1,5 @@
+
+
 var mainVm = new Vue({
     el: '#app',
     data: {
@@ -21,11 +23,33 @@ var mainVm = new Vue({
 
         
         findHotels: function(event){
-            event.preventDefault();
-            
-            console.log(this.location)
+            // event.preventDefault();
+            this.locations = []
+            console.log("this.location", this.location)
             
             $.post('/hoteldata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
+            // console.log(data) 
+
+            hotelData = JSON.parse(data)
+            console.log(hotelData)
+            // console.log(hotelData.results[0])
+                for( var i = 0; i < hotelData.results.length; i++){
+                    // console.log(hotelData.results[i])
+                    mainVm.locations.push(hotelData.results[i])
+
+                }
+                // console.log(mainVm.locations)
+                
+            })
+        
+        },
+
+        findMapHotels: function(event){
+            // event.preventDefault();
+            this.locations = []
+            console.log("this.location", this.location)
+            
+            $.post('/hotelMapdata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
             // console.log(data) 
 
             hotelData = JSON.parse(data)

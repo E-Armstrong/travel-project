@@ -31,7 +31,7 @@
 
 <div id="app">
     <div class="container">
-        <br
+        <br>
         <div class="row">
             <div class="col-12">
                 <image class="img" src="https://scontent.fapa1-2.fna.fbcdn.net/v/t31.0-8/23550869_10108909599198600_9183751702423830675_o.jpg?oh=8b43e2b4aa6839262c8747c60730c63c&oe=5A964553"></image>
@@ -49,8 +49,12 @@
             </div>
         </div>
         <br>
+        <div id="floating-panel">
+              <input onclick="clearMarkers();" type=button value="Hide Markers">
+              <input onclick="deleteMarkers();" type=button value="Delete Markers">
+        </div>
         <div id="map"></div>
-        
+        <br>
         <div id="accordion" role="tablist">
             <div class="card" v-for="(location, index) in locations"  v-bind:id="location.place_id">
               <div class="card-header" v-on:click="findHotelDetails(location, $event)" role="tab" id="headingOne">
@@ -81,6 +85,8 @@
 </div>
 
 <script> 
+var markers = []
+
 function initMap() {     
     var options = {
         zoom: 8,
@@ -89,23 +95,51 @@ function initMap() {
 
     var map = new google.maps.Map(document.getElementById('map'), options);
 
+     
+
     google.maps.event.addListener(map, 'click', function(event) {
-        console.log(event.latLng)
+        console.log(event.latLng.lat(), event.latLng.lng())
         addMarker(event.latLng, map)
-        mainVm.locations = event.latLng
+        
+        latitude = event.latLng.lat()
+        longitude = event.latLng.lng()
+        mainVm.location = `${latitude} ${longitude}`
+        mainVm.findMapHotels()
         
       })
 
     var addMarker = function(coordinates){
+
         var marker = new google.maps.Marker({
               position: coordinates,
               map: map
-            })
+
+        })
+        markers.push(marker)
     }
+
 }
+    // Sets the map on all markers in the array.
+      function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+
+      // Removes the markers from the map, but keeps them in the array.
+      function clearMarkers() {
+        setMapOnAll(null);
+      }
+
+      // Deletes all markers in the array by removing references to them.
+      function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+      }
+
 </script>
 <!-- AUTO COMPLETE -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GgcDmbumAspDKIaVE915FY8xi9GoBkA&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm4Zqkhi-7epTq0LgSHYxd-Y9i1RNaX58&callback=initMap"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script> -->
 <script src="js/main.js"></script>
 </body>
