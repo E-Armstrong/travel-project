@@ -2,6 +2,13 @@
 	border: 1px solid black;
 }
 
+#log-in {
+	position: absolute;
+	font-weight: bold;
+	top: 15px;
+	left: 1050px;
+}
+
 a{
 	color: black;
 }

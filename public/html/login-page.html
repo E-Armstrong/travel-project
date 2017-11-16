@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/vue"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <link 
+    rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
+    crossorigin="anonymous"
+    >    
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" 
+    crossorigin="anonymous"></script>
+
+    <script 
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
+    integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
+    crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="app">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <image class="img" src="https://scontent.fapa1-2.fna.fbcdn.net/v/t31.0-8/23550869_10108909599198600_9183751702423830675_o.jpg?oh=8b43e2b4aa6839262c8747c60730c63c&oe=5A964553"></image>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <h1>Log in:</h1>
+                <span><input class="input" id="logInName" v-model="logInName" type="text" placeholder="Enter your Username"><span>
+                <span><input class="input" id="logInPassword" v-model="logInPassword" type="text" placeholder="Enter your Password"><span>
+                <br><br>
+                <input class="btn-margin btn" v-on:click="logIn" type="submit">
+            </div>
+            <div class="col-6">
+                <h1>Sign Up:</h1>
+                <span><input class="input" id="createUserName" v-model="createUserName" type="text" placeholder="Create a Username"><span>
+                <span><input class="input" id="createPassword" v-model="createPassword" type="text" placeholder="Create a Password"><span>
+                <br><br>
+                <input class="btn-margin btn" v-on:click="signUp" type="submit">
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="js/login-page.js"></script>
+    </body>
+    </html>

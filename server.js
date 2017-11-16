@@ -27,11 +27,9 @@ app.get('/', function(req, res){
     res.sendFile('./html/index.html', {root: './public'})
 })
 
-// app.post('/hosteldata', function(req, res) {
-// })
-
-// app.post('/airbnbdata', function(req, res) {
-// })
+app.get('/login-page', function(request, response){
+    response.sendFile('./public/html/login-page.html', {root: './'})
+})
 
 
 app.post('/hoteldata', function(req, res) {
@@ -49,12 +47,20 @@ app.post('/hoteldetails', function(req, res) {
     request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyDXE5RxiZGcQmZ1XUzWVPD6hygz_udMGqY`, function (error, response, body) {
     console.log('data from google: ', body)
     res.send(body)
-    
-    })
+})
 })
 
+app.get('/log-in', function(req, res) {
+    
+    console.log('Data from sign-in: ', req.name, req.password)
+    res.send(res.body)
+})
 
-
+app.get('/create-log-in', function(req, res) {
+    
+    console.log('Data from create log-in: ', req.name, req.password)
+    res.send(res.body)
+})
 
 
 app.listen(8080, function() {
