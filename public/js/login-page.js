@@ -20,7 +20,9 @@ var mainVm = new Vue({
             event.preventDefault();
             console.log("Username/Password?", this.logInName, this.logInPassword)        
             $.get('/log-in', {name: this.logInName, password: this.logInPassword}, (data)=>{ 
-            // console.log(data)
+                if (data.success) {
+                    window.location.href = '/VIP-suite'
+                }
             })
         
         },

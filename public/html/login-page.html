@@ -25,7 +25,7 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
     integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
     crossorigin="anonymous"></script>
-    <title></title>
+    <title>Hotel Compare Log-In</title>
 </head>
 <body>
 
@@ -42,16 +42,12 @@
             <div class="col-6">
                 <h1>Log in:</h1>
                 <span><input class="input" id="logInName" v-model="logInName" type="text" placeholder="Enter your Username"><span>
-                <span><input class="input" id="logInPassword" v-model="logInPassword" type="text" placeholder="Enter your Password"><span>
+                <span><input class="input" id="logInPassword" v-model="logInPassword" type="password" placeholder="Enter your Password"><span>
                 <br><br>
                 <input class="btn-margin btn" v-on:click="logIn" type="submit">
             </div>
             <div class="col-6">
-                <h1>Sign Up:</h1>
-                <span><input class="input" id="createUserName" v-model="createUserName" type="text" placeholder="Create a Username"><span>
-                <span><input class="input" id="createPassword" v-model="createPassword" type="text" placeholder="Create a Password"><span>
-                <br><br>
-                <input class="btn-margin btn" v-on:click="signUp" type="submit">
+                
             </div>
         </div>
     </div>
