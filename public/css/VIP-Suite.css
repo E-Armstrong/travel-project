@@ -1,0 +1,34 @@
+.borders{
+	border: 1px solid black;
+}
+
+#log-in {
+	position: absolute;
+	font-weight: bold;
+	top: 15px;
+	left: 1050px;
+}
+
+a{
+	color: black;
+}
+
+.img{
+	height:100%;
+	width:auto;
+}
+
+.input{
+	width:91%;
+	height: 2.5rem;
+	border-radius: .5rem;
+}
+
+.btn-margin{
+	margin-left: 1rem;
+}
+
+#map{
+	height:400px;
+	width:100%;
+}

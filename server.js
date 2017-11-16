@@ -21,7 +21,27 @@ var hotelSchema = new mongoose.Schema({
 
 var hotelModel = mongoose.model('hotel', hotelSchema)
 
+var users = {
+    raphael: 'dragons',
+    eric: 'dingleberries',
+    michael: 'goats',
+    bernidette  : 'feelthebern',
+    password: 'password',
+}
 
+var isLoggedIn = function(req, res, next){
+    console.log('Data from sign-in isLoggedIn function: ', req.query.name, req.query.password)
+    
+    var name = req.query.name
+    var pass = req.query.password
+    if ( name in users && users[name] === pass ) {
+        console.log("isLoggedIn was called successfully")
+        res.send({success: "Sucessfullly logged in!"})
+    }
+    else {
+        res.redirect('/login-page')
+    }
+}
 
 app.get('/', function(req, res){
     res.sendFile('./html/index.html', {root: './public'})
@@ -29,6 +49,10 @@ app.get('/', function(req, res){
 
 app.get('/login-page', function(request, response){
     response.sendFile('./public/html/login-page.html', {root: './'})
+})
+
+app.get('/VIP-suite', function(req, res, next){
+    res.sendFile('./html/VIP-Suite.html', {root: './public'})
 })
 
 
@@ -50,18 +74,9 @@ app.post('/hoteldetails', function(req, res) {
 })
 })
 
-app.get('/log-in', function(req, res) {
-    
-    console.log('Data from sign-in: ', req.name, req.password)
-    res.send(res.body)
+app.get('/log-in', isLoggedIn, function(req, res) {
+    console.log('Data from sign-in: ', req.query.name, req.query.password)
 })
-
-app.get('/create-log-in', function(req, res) {
-    
-    console.log('Data from create log-in: ', req.name, req.password)
-    res.send(res.body)
-})
-
 
 app.listen(8080, function() {
     console.log('started on 8080')
