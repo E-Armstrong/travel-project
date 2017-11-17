@@ -7,8 +7,6 @@ var mainVm = new Vue({
         location:'',
         details:[],
         triedSearch: false,
-        savedHotels:[],
-        newSavedHotels:''
     },
     mounted: function() {
         $.get('/locations', (dataFromServer) => {
@@ -88,25 +86,6 @@ var mainVm = new Vue({
 
             })
         },
-
-        // ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//         postNewTodo: function(event){                
-//             $.post('/saveToDo', {saved: this.newSavedHotels}, function(data){
-//                 console.log('$POST',data)
-//                 mainVm.savedHotels.push(data)
-//                 //mainVm.getFreshData()
-//             })
-//         },
-//         getFreshData: function(event){
-//             $.get('/saveToDo', function(data){
-//                 mainVm.savedHotels = data
-//             })
-//         },
-            postRemoveTodo: function(todo){
-            $.post('/deleteToDo', todo, function(data){
-                mainVm.getFreshData()
-            })
-        },
-//     }
-// })
+    }
+})
 

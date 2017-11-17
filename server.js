@@ -117,7 +117,7 @@ app.post('/hotelMapdata', function(req, res) {
     })
 })
 
-app.post('/saveToDo', function(req, res) {
+app.post('/saveHotel', function(req, res) {
 
     let newHotel = {
         name: req.body.location.name,
@@ -139,16 +139,6 @@ app.post('/saveToDo', function(req, res) {
         res.status(200).send(createdHotel);
     })
 
-// app.get('/saveToDo', function(req, res){
-//     hotelModel.find({}, function(err, docs){   
-//         if (err) {
-//             console.log(err)
-//             res.send('GET TODO: oops, something went wrong. ')
-//         } else {
-//             res.send(docs)
-//         }
-//     }) 
-// })
 
     console.log("Data from saveToDo handle: name ", typeof(req.body.location.name))
     console.log("Data from saveToDo handle: address", typeof(req.body.location.formatted_address))
