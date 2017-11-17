@@ -14,7 +14,7 @@
     crossorigin="anonymous"
     >    
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/VIP-Suite.css">
 
     <script 
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
@@ -62,13 +62,13 @@
         <div id="map"></div>
         <br>
         <ol>
-            <li v-for="(todo, index) in list">
+            <!-- <li v-for="(todo, index) in list">
                 <div v-bind:class="{ checkedToDo: todo.isCheckedComplete }">
                     <input v-on:click="markAsChecked(todo, index, $event)" v-bind:class="{ checkToDo: todo.isCheckedComplete }" v-model="todo.isCheckedComplete" type="checkbox"> // the v-bind:class makes the text so that it is crossed out when the server checks that the object is checked, the v-model makes sure the input checkbox itself stays checked or not depending on if isCheckedComplete is true on the server
                     {{ todo.name }}
                     <button v-on:click="deleteToDo(todo, index, $event)"  type="button" class="btn btn-danger">Delete Task</button>
                 </div>  
-            </li>
+            </li> -->
         </ol>
         <br>
         <div id="accordion" role="tablist">
@@ -88,9 +88,8 @@
                                 <div ><b>Address:</b> {{location.details.formatted_address}}</div> 
                                 <div ><b>Phone:</b> {{location.details.formatted_phone_number}}</div> 
                                 <div ><b>Rating:</b> {{location.details.rating}}</div> 
-                                <div ><b>Website:</b> <a v-bind:href="location.details.url">{{location.details.url}}</a></div> 
-                                <button v-on:click=`saveToDo(${location})`  type="button" class="btn btn-success">Save Hotel</button> 
-                                <div ><b>Photo:</b>{{location.details.photos[0]}}</a></div> 
+                                <div ><b>Website:</b> <a v-bind:href="location.details.website">{{location.details.website}}</a></div> 
+                                <button v-on:click="saveToDo(location.details)"  type="button" class="btn btn-success">Save Hotel</button> 
                         </div>
                 </div>
               </div>
@@ -159,12 +158,8 @@ function initMap() {
 
 </script>
 <!-- AUTO COMPLETE -->
-<<<<<<< HEAD
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuhuzRXCiBSpIH0zGr2jmNR9eSiighKCw&callback=initMap"></script>
-=======
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo&callback=initMap"></script>
->>>>>>> 71aa6fdfb228f9d1f29615270c5513d2bdb142bc
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script> -->
-<script src="js/main.js"></script>
+<script src="js/VIP-Suite.js"></script>
 </body>
 </html>
