@@ -27,13 +27,13 @@ var mainVm = new Vue({
         findHotels: function(event){
             // event.preventDefault();
             this.locations = []
-            console.log("this.location", this.location)
+            //console.log("this.location", this.location)
             
             $.post('/hoteldata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
             // console.log(data) 
             mainVm.triedSearch = true
             hotelData = JSON.parse(data)
-            console.log(hotelData)
+            // console.log(hotelData)
             // console.log(hotelData.results[0])
                 for( var i = 0; i < hotelData.results.length; i++){
                     // console.log(hotelData.results[i])
@@ -54,13 +54,13 @@ var mainVm = new Vue({
         findMapHotels: function(event){
             // event.preventDefault();
             this.locations = []
-            console.log("this.location", this.location)
+            // console.log("this.location", this.location)
             
             $.post('/hotelMapdata', {hotelObject: this.location}, (data)=>{ //data sent must be an object, placeholder object inserted
             // console.log(data) 
             mainVm.triedSearch = true
             hotelData = JSON.parse(data)
-            console.log(hotelData)
+            // console.log(hotelData)
             // console.log(hotelData.results[0])
                 for( var i = 0; i < hotelData.results.length; i++){
                     // console.log(hotelData.results[i])
@@ -81,13 +81,13 @@ var mainVm = new Vue({
             }
             // event.stopPropagation();
             // id = place_id
-            console.log('location? ', location)
+            //console.log('location? ', location)
             
             $.post('/hoteldetails', {hotelObject: location.place_id}, function(data){
-                console.log("Event Target ID: ", location.place_id)
+                //console.log("Event Target ID: ", location.place_id)
 
                 hotelDetails = JSON.parse(data)
-                console.log('details? ', hotelDetails)
+                // console.log('details? ', hotelDetails)
                 // mainVm.details.push(hotelDetails.result)
                 location.details = hotelDetails.result
                 mainVm.$forceUpdate()
@@ -97,10 +97,11 @@ var mainVm = new Vue({
             })
         },
         saveToDo: function(location) {
+            console.log("location.name data: ", location.name)
             $.post('/saveToDo', {location: location}, function(data){
                 
             })
-        }
+        },
     }
 })
 
