@@ -1,5 +1,3 @@
-
-
 var mainVm = new Vue({
     el: '#app',
     data: {
@@ -9,7 +7,7 @@ var mainVm = new Vue({
 
         details:[],
         triedSearch: false,
-        savedLoctions: [],
+        savedHotels: [],
     },
     mounted: function() {
         $.get('/locations', (dataFromServer) => {
@@ -49,6 +47,12 @@ var mainVm = new Vue({
                 
            
         
+        },
+        getFreshData: function(event){
+            $.post("/currentHotels", function(data) {
+                console.log("the getFreshData data: ", data)
+                mainVm.savedHotels = data
+            })
         },
 
         findMapHotels: function(event){
@@ -96,12 +100,23 @@ var mainVm = new Vue({
 
             })
         },
-        saveToDo: function(location) {
-            console.log("location.name data: ", location.name)
-            $.post('/saveToDo', {location: location}, function(data){
-                
+        saveHotel: function(location) {
+            // console.log("location.name data: ", location.name)
+            $.post('/saveHotel', {location: location}, function(data){
+                mainVm.getFreshData();
             })
         },
-    }
+        deleteHotel: function(toDo, index, event) {
+            var id = mainVm.savedHotels[index]._id
+            console.log("ID String from main.js:", mainVm.savedHotels[index]._id)
+            $.post("/deleteHotel", {id: id}, function(err, dataFromServer){
+                if (err) {console.log(err)}
+                mainVm.getFreshData()
+            })
+        },
+    },
+    created(){
+        this.getFreshData()
+     },
 })
 

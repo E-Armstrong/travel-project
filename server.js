@@ -105,7 +105,7 @@ app.post('/hotelMapdata', function(req, res) {
     })
 })
 
-app.post('/saveToDo', function(req, res) {
+app.post('/saveHotel', function(req, res) {
 
     let newHotel = {
         name: req.body.location.name,
@@ -115,8 +115,6 @@ app.post('/saveToDo', function(req, res) {
         website: req.body.location.website,
         reviews: req.body.location.reviews[0].text,
     }
-
-    console.log(newHotel)
     
     new hotelModel(newHotel).save(function(err, createdHotel) {
         if (err) { 
@@ -127,12 +125,33 @@ app.post('/saveToDo', function(req, res) {
         res.status(200).send(createdHotel);
     })
 
-    console.log("Data from saveToDo handle: name ", typeof(req.body.location.name))
-    console.log("Data from saveToDo handle: address", typeof(req.body.location.formatted_address))
-    console.log("Data from saveToDo handle: phone number", typeof(req.body.location.formatted_phone_number))
-    console.log("Data from saveToDo handle: rating", typeof(req.body.location.rating))
-    console.log("Data from saveToDo handle: website", typeof(req.body.location.website))
-    console.log("Data from saveToDo handle: reviews", typeof(req.body.location.reviews[0].text))
+})
+
+app.post("/currentHotels", function(req, res){
+    hotelModel.find(
+        {},
+        function(err, hotels) {
+            if (err) {
+                res.status(500).send(err);
+                return console.log(err);
+            }
+            res.status(200).send(hotels);
+        }
+    )
+})
+
+app.post("/deleteHotel", function(req, res){
+    console.log('body:', req.body);
+    hotelModel.findOneAndRemove(
+        { _id: req.body.id },
+        function(err, deletedHotel) {
+            if (err) {
+                console.log(err);
+                res.status(500).send(err);
+            }
+            console.log('It deleted:', deletedHotel)
+            res.status(200).send(deletedHotel._id);
+        })
 })
 
 app.listen(8080, function() {

@@ -61,15 +61,18 @@
             </div>
         <div id="map"></div>
         <br>
-        <ol>
-            <!-- <li v-for="(todo, index) in list">
-                <div v-bind:class="{ checkedToDo: todo.isCheckedComplete }">
-                    <input v-on:click="markAsChecked(todo, index, $event)" v-bind:class="{ checkToDo: todo.isCheckedComplete }" v-model="todo.isCheckedComplete" type="checkbox"> // the v-bind:class makes the text so that it is crossed out when the server checks that the object is checked, the v-model makes sure the input checkbox itself stays checked or not depending on if isCheckedComplete is true on the server
-                    {{ todo.name }}
-                    <button v-on:click="deleteToDo(todo, index, $event)"  type="button" class="btn btn-danger">Delete Task</button>
+        <h1 v-if="savedHotels.length !== 0" >Favorite Hotels:</h1>
+        <ul>
+            <li v-for="(hotel, index) in savedHotels">
+                    <div ><b>Name:</b> {{hotel.name}}</div> 
+                    <div ><b>Address:</b> {{hotel.address}}</div> 
+                    <div ><b>Phone:</b> {{hotel.phoneNumber}}</div> 
+                    <div ><b>Rating:</b> {{hotel.rating}}</div> 
+                    <div ><b>Website:</b> <a v-bind:href="hotel.website">{{hotel.website}}</a></div> 
+                    <button v-on:click="deleteHotel(hotel, index, $event)"  type="button" class="btn btn-danger">Remove From Favorites</button>
                 </div>  
-            </li> -->
-        </ol>
+            </li>
+        </ul>
         <br>
         <div id="accordion" role="tablist">
             <div class="card" v-for="(location, index) in locations"  v-bind:id="location.place_id">
@@ -89,7 +92,7 @@
                                 <div ><b>Phone:</b> {{location.details.formatted_phone_number}}</div> 
                                 <div ><b>Rating:</b> {{location.details.rating}}</div> 
                                 <div ><b>Website:</b> <a v-bind:href="location.details.website">{{location.details.website}}</a></div> 
-                                <button v-on:click="saveToDo(location.details)"  type="button" class="btn btn-success">Save Hotel</button> 
+                                <button v-on:click="saveHotel(location.details)"  type="button" class="btn btn-success">Add to Favorites</button> 
                         </div>
                 </div>
               </div>
