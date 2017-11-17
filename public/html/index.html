@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <script src="https://unpkg.com/vue"></script>
+
+    <script src="https://unpkg.com/vue-scrollto"></script>
+
     <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
 
     <link 
     rel="stylesheet" 
@@ -43,9 +47,9 @@
         <br>
         <div class="row">
             <div class="col-12">
-                <h1>Find Hotels in:</h1>
+                <h1 id="findHotelsIn">Find Hotels in:</h1>
                 <span><input class="input" id="hotelLocation" v-model="location" type="text" placeholder="  Enter a City"><span>
-                <input class="btn-margin btn" v-on:click="findHotels" type="submit">
+                <input v-scroll-to="'#findHotelsIn'" class="btn-margin btn" v-on:click="findHotels" type="submit">
             </div>
         </div>
         <br>
@@ -79,8 +83,10 @@
                                 <div ><b>Name:</b> {{location.details.name}}</div> 
                                 <div ><b>Address:</b> {{location.details.formatted_address}}</div> 
                                 <div ><b>Phone:</b> {{location.details.formatted_phone_number}}</div> 
-                                <div ><b>Rating:</b> {{location.details.rating}}</div> 
-                                <div ><b>Website:</b> <a v-bind:href="location.details.website">{{location.details.website}}</a></div> 
+                                <div ><b>Rating:</b> {{location.details.rating}}</div>
+                                <div ><b>Reviews:</b> {{location.details.reviews[0].text}}</div> 
+                                <br> 
+                                <div ><b>Website:</b> <a v-bind:href="location.details.website" target="_blank">{{location.details.website}}</a></div> 
                         </div>
                 </div>
               </div>
@@ -146,7 +152,7 @@ function initMap() {
 
 </script>
 <!-- AUTO COMPLETE -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp6N27cY817n1orUFFOE4D6SDRqyzFy20&callback=initMap"></script>
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj6H3jojxCX5hDq4nryj-7O1JUmzrrIY4&libraries=places"></script> -->
 <script src="js/main.js"></script>
 </body>

@@ -38,6 +38,7 @@ var mainVm = new Vue({
                     // console.log(hotelData.results[i])
                     mainVm.locations.push(hotelData.results[i])
                 }
+
                 // if (mainVm.locations.length === 0){
                 //     mainVm.locations.push('No Hotels in Area')
                 // }
@@ -66,6 +67,7 @@ var mainVm = new Vue({
                     mainVm.locations.push(hotelData.results[i])
 
                 }
+                this.$scrollTo('#findHotelsIn', 0)
                 // console.log(mainVm.locations)
                 
             })
