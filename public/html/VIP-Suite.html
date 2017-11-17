@@ -69,7 +69,7 @@
                     <div ><b>Address:</b> {{hotel.address}}</div> 
                     <div ><b>Phone:</b> {{hotel.phoneNumber}}</div> 
                     <div ><b>Rating:</b> {{hotel.rating}}</div> 
-                    <div ><b>Website:</b> <a v-bind:href="hotel.website">{{hotel.website}}</a></div> 
+                    <div ><b>Website:</b> <a v-bind:href="hotel.website" target="_blank">{{hotel.website}}</a></div> 
                     <button v-on:click="deleteHotel(hotel, index, $event)"  type="button" class="btn btn-danger">Remove From Favorites</button>
                 </div>  
             </li>
