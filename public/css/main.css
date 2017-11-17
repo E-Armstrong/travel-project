@@ -31,8 +31,25 @@ a{
 #map{
 	height:400px;
 	width:100%;
+    -webkit-filter: grayscale(70%);
+       -moz-filter: grayscale(70%);
+        -ms-filter: grayscale(70%);
+         -o-filter: grayscale(70%);
+            filter: grayscale(70%);
+
 }
 
 .long{
 	width:100%;
+}
+
+.btn{
+	background-color: black;
+	color: white;
+}
+a:hover{
+	color: #66758a;
+}
+.btn:hover{
+	background-color: #66758a;
 }

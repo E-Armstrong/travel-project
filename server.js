@@ -1,6 +1,6 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var request = require('request')
+var express     = require('express')
+var bodyParser  = require('body-parser')
+var request     = require('request')
 
 const mongoose = require('mongoose')
 var app = express()
@@ -60,8 +60,12 @@ app.get('/VIP-suite', function(req, res, next){
 
 
 app.post('/hoteldata', function(req, res) {
+
+    console.log(req.body.hotelObject)
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyCp6N27cY817n1orUFFOE4D6SDRqyzFy20`, function (error, response, body) {
+
     // console.log(req.body.hotelObject)
-    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo`, function (error, response, body) {
+
     //console.log('data from google: ', body)
     //console.log(res, 'res')
     // console.log(body)
@@ -73,8 +77,10 @@ app.post('/hoteldata', function(req, res) {
 })
 
 app.post('/hoteldetails', function(req, res) {
-    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo`, function (error, response, body) {
-    // console.log('data from google: ', body)
+
+    request(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.body.hotelObject}&key=AIzaSyCp6N27cY817n1orUFFOE4D6SDRqyzFy20`, function (error, response, body) {
+    console.log('data from google: ', body)
+
     res.send(body)
 })
 })
@@ -84,8 +90,11 @@ app.get('/log-in', isLoggedIn, function(req, res) {
 })
 
 app.post('/hoteldata', function(req, res) {
-    // console.log(req.body.hotelObject)
-    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo`, function (error, response, body) {
+
+    console.log(req.body.hotelObject)
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyCp6N27cY817n1orUFFOE4D6SDRqyzFy20`, function (error, response, body) {
+
+
     //console.log('data from google: ', body)
     //console.log(res, 'res')
     // console.log(body)
@@ -95,8 +104,10 @@ app.post('/hoteldata', function(req, res) {
 })
 
 app.post('/hotelMapdata', function(req, res) {
-    // console.log(req.body.hotelObject)
-    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyDr2i-eGynB7zL9N2r9K8JrbMqsBEaJoGo`, function (error, response, body) {
+
+    console.log(req.body.hotelObject)
+    request(`https://maps.googleapis.com/maps/api/place/textsearch/json?location=${req.body.hotelObject}&type=lodging&radius=10000&key=AIzaSyCp6N27cY817n1orUFFOE4D6SDRqyzFy20`, function (error, response, body) {
+
     //console.log('data from google: ', body)
     //console.log(res, 'res')
     // console.log(body)
